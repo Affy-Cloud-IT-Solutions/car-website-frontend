@@ -1,9 +1,13 @@
-// src/App.jsx
+// src/pages/public/Home.jsx
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
-import RoutesConfig from "./routeconfig";
+// import { ButtonHover } from "../../components/ButtonHover";
+import GMCWelcome from "../../components/home/GmcWelcome";
+import CarCard from "../../components/carCard";
+import SearchBar from "../../components/searchBar";
+import { ImageCarousel } from "../../components/home/Carousel";
+import CarFilterSelects from "./FilterContainer";
 
-const App = () => {
+const Home = () => {
   const cars = [
     {
       imageUrl:
@@ -43,10 +47,19 @@ const App = () => {
     },
   ];
   return (
-    <BrowserRouter>
-      <RoutesConfig />
-    </BrowserRouter>
+    <div>
+      <ImageCarousel />
+      <GMCWelcome />
+      <CarFilterSelects />
+      <SearchBar />
+      {/* <FilterContainer /> */}
+      <div className="grid md:grid-cols-2 grid-cols-1 p-4">
+        {cars.map((car, index) => (
+          <CarCard key={index} car={car} />
+        ))}
+      </div>
+    </div>
   );
 };
 
-export default App;
+export default Home;
