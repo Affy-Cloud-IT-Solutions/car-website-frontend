@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Phone, Mail, Instagram, PhoneCall, Hamburger } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
+import { AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
