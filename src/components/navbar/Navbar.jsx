@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Phone, Mail, Instagram, PhoneCall } from "lucide-react";
+import { Phone, Mail, Instagram, PhoneCall, Hamburger } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Button } from "../ui/button";
 
 const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -31,6 +32,14 @@ const Navbar = () => {
     { name: "Our Location", path: "/our-location" },
     { name: "Contact Us", path: "/contact-us" },
   ];
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Animation variants for slide
+  const variants = {
+    hidden: { x: "100%" },
+    visible: { x: 0 },
+    exit: { x: "100%" },
+  };
 
   return (
     <div className="w-full bg-white shadow-b-md">
@@ -92,7 +101,7 @@ const Navbar = () => {
         </div>
 
         {/* Navigation Bar */}
-        <nav className="bg-gray-700 text-white relative">
+        <nav className="bg-gray-700 text-white relative hidden md:flex">
           <ul className="flex justify-center items-center max-w-7xl mx-auto">
             {navItems.map((item, index) => (
               <li
@@ -130,6 +139,73 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
+        </nav>
+        <nav className="flex md:hidden items-center justify-between p-4 bg-gray-800 text-white relative z-[100]">
+          <h3 className="text-lg font-semibold">Menu</h3>
+
+          {/* Hamburger button */}
+          <Button
+            variant="ghost"
+            className="text-white z-[110]"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <X size={24} /> : <Hamburger size={24} />}
+          </Button>
+
+          {/* Background Overlay */}
+          <AnimatePresence>
+            {isOpen && (
+              <motion.div
+                key="overlay"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.5 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="fixed inset-0 bg-black backdrop-blur-sm z-[90]"
+                onClick={() => setIsOpen(false)}
+              />
+            )}
+          </AnimatePresence>
+
+          {/* Sliding Menu */}
+          <AnimatePresence>
+            {isOpen && (
+              <motion.div
+                key="menu"
+                variants={variants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                transition={{ type: "spring", stiffness: 120, damping: 20 }}
+                className="fixed top-0 right-0 h-full w-64 bg-gray-800 shadow-xl z-[100] flex flex-col"
+              >
+                <div className="flex items-center justify-between p-4 border-b border-gray-700">
+                  <h3 className="text-lg font-semibold">Menu</h3>
+                  <Button
+                    variant="ghost"
+                    className="text-white"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <X size={24} />
+                  </Button>
+                </div>
+
+                <ul className="flex flex-col w-full">
+                  {navItems.map((item, index) => (
+                    <li key={index} className="border-b border-gray-700">
+                      <Link
+                        to={item.path}
+                        className="block px-4 py-4 text-sm font-medium hover:bg-gray-700 transition-colors duration-200"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {item.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </nav>
       </div>
     </div>

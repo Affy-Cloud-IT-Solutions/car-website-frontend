@@ -141,8 +141,8 @@ const CarFilterSelects = () => {
   };
 
   return (
-    <div className=" p-6">
-      <div className="max-w-7xl mx-auto">
+    <div>
+      <div className="max-w-7xl mx-auto p-6">
         <h1 className="text-3xl font-bold text-gray-800 mb-6">
           Car Search Filters
         </h1>

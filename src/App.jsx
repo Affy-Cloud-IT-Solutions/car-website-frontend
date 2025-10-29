@@ -4,44 +4,6 @@ import { BrowserRouter } from "react-router-dom";
 import RoutesConfig from "./routeconfig";
 
 const App = () => {
-  const cars = [
-    {
-      imageUrl:
-        "https://www.gmcmotors.co.uk/images/mediacache/img-58261_maxw-512.jpg",
-      make: "Audi",
-      model: "A1 S-Line",
-      variant: "Tfsi 1.4",
-      trim: "TFSI s-line Sportback S",
-      emissionStandard: "Tronic Euro 5",
-      transmission: "Automatic",
-      doors: "5",
-      price: 7275,
-      year: 2013,
-      reg: "63",
-      mileage: 72000,
-      engine: "1.4",
-      fuel: "Petrol",
-      colour: "White",
-    },
-    {
-      imageUrl:
-        "https://www.gmcmotors.co.uk/images/mediacache/img-58261_maxw-512.jpg",
-      make: "Audi",
-      model: "A1 Sport",
-      variant: "Tfsi 1.4",
-      trim: "TFSI Sport Sportback S",
-      emissionStandard: "Tronic Euro 5",
-      transmission: "Automatic",
-      doors: "5",
-      price: 7975,
-      year: 2012,
-      reg: "12",
-      mileage: 35000,
-      engine: "1.4",
-      fuel: "Petrol",
-      colour: "Silver",
-    },
-  ];
   return (
     <BrowserRouter>
       <RoutesConfig />
