@@ -12,7 +12,6 @@ import Slider from "react-slick";
 const OurTimings = () => {
   return (
     <div>
-      <ImageCarousel />
       <h1 className="md:text-4xl text-3xl pt-8 font-bold text-center text-gray-800 mb-6">
         Opening Times
       </h1>

@@ -81,7 +81,6 @@ const SoldGallery = () => {
   ];
   return (
     <div>
-      <ImageCarousel />
       <CarFilterSelects />
       <SearchBar />
       <div className="grid md:grid-cols-2 grid-cols-1 p-4">

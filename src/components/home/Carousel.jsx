@@ -1,36 +1,43 @@
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // Optional: only if you want default styles
+import { useState, useEffect } from "react";
 
 export function ImageCarousel() {
+  const images = [
+    "https://www.gmcmotors.co.uk/images/mediacache/img-9_maxw-1024.jpg",
+    "https://www.gmcmotors.co.uk/images/mediacache/img-10_maxw-1024.jpg",
+    "https://www.gmcmotors.co.uk/images/mediacache/img-11_maxw-1024.jpg",
+    "https://www.gmcmotors.co.uk/images/mediacache/img-12_maxw-1024.jpg",
+    "https://www.gmcmotors.co.uk/images/mediacache/img-13_maxw-1024.jpg",
+    "https://www.gmcmotors.co.uk/images/mediacache/img-14_maxw-1024.jpg",
+    "https://www.gmcmotors.co.uk/images/mediacache/img-15_maxw-1024.jpg",
+    "https://www.gmcmotors.co.uk/images/mediacache/img-16_maxw-1024.jpg",
+    "https://www.gmcmotors.co.uk/images/mediacache/img-17_maxw-1024.jpg",
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 4000); // 4 seconds
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
   return (
-    <Carousel
-      animationHandler="fade"
-      autoPlay
-      interval={4000}
-      infiniteLoop
-      showThumbs={false}
-      className=" mx-0"
-    >
+    <div className="w-full flex flex-col overflow-hidden ">
       <div className="relative">
         <img
-          src="https://images.unsplash.com/photo-1617531653332-bd46c24f2068?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1215"
-          alt="Slide 1"
-          className="w-full max-h-[400px] animation-duration-initial object-cover rounded-lg"
+          src={images[currentIndex]}
+          alt={`Slide ${currentIndex + 1}`}
+          className="w-full max-h-[400px] object-cover min-h-[200px]  transition-all duration-700 ease-in-out"
         />
-        {/* <div className="absolute bottom-0 p-4 bg-black/50 text-white rounded-b-lg">
-          <p className="text-lg font-semibold">Slide 1 Caption</p>
+        {/* Optional caption overlay */}
+        {/* <div className="absolute bottom-0 left-0 right-0 p-4 bg-black/40 text-white text-sm">
+          Slide {currentIndex + 1} of {images.length}
         </div> */}
       </div>
-      <div className="relative">
-        <img
-          src="https://images.unsplash.com/photo-1523983388277-336a66bf9bcd?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170"
-          alt="Slide 2"
-          className="w-full max-h-[400px]  object-cover rounded-lg"
-        />
-        {/* <div className="absolute bottom-0 p-4 bg-black/50 text-white rounded-b-lg">
-          <p className="text-lg font-semibold">Slide 2 Caption</p>
-        </div> */}
-      </div>
-    </Carousel>
+    </div>
   );
 }

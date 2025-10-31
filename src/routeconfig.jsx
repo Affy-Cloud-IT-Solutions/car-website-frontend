@@ -10,6 +10,8 @@ import OurTimings from "./pages/our-timings";
 import DeliveryPolicy from "./pages/Delivery";
 import WarrantyPolicy from "./pages/warranty-policy";
 import UsedCars from "./pages/used-cars";
+import PartExchange from "./pages/PartExchange";
+import Reviews from "./pages/reviews";
 
 // Lazy load pages
 const Home = lazy(() => import("./pages/public/Home"));
@@ -40,6 +42,8 @@ const RoutesConfig = () => {
           <Route path="/sold-gallery" element={<SoldGallery />} />
           <Route path="/sold-vans" element={<SoldGallery />} />
           <Route path="/used-cars" element={<UsedCars />} />
+          <Route path="/part-exchange" element={<PartExchange />} />
+          <Route path="/reviews" element={<Reviews />} />
         </Route>
 
         {/* Protected Routes */}

@@ -1,8 +1,16 @@
 import React, { useState } from "react";
-import { Phone, Mail, Instagram, PhoneCall, Hamburger } from "lucide-react";
+import {
+  Phone,
+  Mail,
+  Instagram,
+  PhoneCall,
+  Hamburger,
+  X,
+  AlignJustify,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
-import { AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 
 const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -147,10 +155,10 @@ const Navbar = () => {
           {/* Hamburger button */}
           <Button
             variant="ghost"
-            className="text-white z-[110]"
+            className="text-white "
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <X size={24} /> : <Hamburger size={24} />}
+            {isOpen ? <X size={24} /> : <AlignJustify size={24} />}
           </Button>
 
           {/* Background Overlay */}

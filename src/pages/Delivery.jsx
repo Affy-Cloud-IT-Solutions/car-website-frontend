@@ -4,7 +4,6 @@ import React from "react";
 const DeliveryPolicy = () => {
   return (
     <div>
-      <ImageCarousel />
       <h1 className="text-3xl md:text-4xl font-bold text-gray-800 text-center my-4">
         Delivery - GMC Motors
       </h1>

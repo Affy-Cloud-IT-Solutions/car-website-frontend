@@ -48,7 +48,6 @@ const Home = () => {
   ];
   return (
     <div>
-      <ImageCarousel />
       <GMCWelcome />
       <CarFilterSelects />
       <SearchBar />

@@ -6,12 +6,11 @@ import {
   CardTitle,
 } from "../components/ui/card"; // Adjust path based on your shadcn setup
 import { ImageCarousel } from "@/components/home/Carousel";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 const LocationSection = () => {
   return (
     <div>
-      <ImageCarousel />
       <div className="w-full pt-8 text-center md:text-left">
         <h2 className="text-4xl font-bold text-gray-800 text-center">
           Our Location
